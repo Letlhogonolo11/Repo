@@ -1,0 +1,131 @@
+---
+title: "Assignment"
+author: "setlhabi letlhogonolo 202001771"
+date: "16/11/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+```
+
+# 1.1 variables
+```{r, message=FALSE,echo=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tm)
+library(wordcloud2)
+```
+
+## What is the value of " B " after running these command?
+```{r}
+a <- 5.0
+c <- 10
+t <- 12
+B <- a+c/t
+
+```
+The value of b is `r B`
+
+## What type of vector do you get in each of the following?
+```{r}
+vec_1 <- c(44, 5, 0, "k")
+vec_2 <- c(1, 2, 3, FALSE)
+vec_3 <- c("a", "b", "c", TRUE)
+vec_4 <- c(1, 2, 3, "4")
+```
+vector 1 is `r typeof(vec_1)`
+vector 2 is `r typeof(vec_2)`
+vector 3 is `r typeof(vec_3)`
+vector 4 is `r typeof(vec_4)`
+
+# 1.2 conditional subsetting
+
+```{r}
+vec <- c(141.2741, 141.8392, 140.5730,NA, 141.3571, 139.8689, 
+         137.9384, NA,139.6620, 138.2521, 138.8635, 141.3885, NA)
+
+ vec_2 <-which(is.na(vec))
+```
+
+###### 1.2.1
+vec_1 is `r na.omit(vec)`, the function that i used which is na.omit removes all incomplete cases of a data frames
+
+#### 1.2.2 indices of missing values are in`r vec_2`i used which functions that returns to locations that have NA values
+
+# 1.2.3 
+`r is.na(vec)` ,i used is.na function to differentiate missing values and non missing values , missing values are those that are assigned to true.
+
+```{r}
+name <- c("Busiswa Mulenga", "Buhle Abraham", "Eddy Malope")
+ages <- c(24,25,26)
+gender <-c("MALE","FEMALE","FEMALE")
+print(data.frame(name,ages,gender))
+```
+
+# functions in R
+
+# 2.2
+
+```{r}
+df <- read.csv('train.csv')
+```
+
+```{r}
+input = c(10, 4, 2, 2)
+evaluate <- function(input){
+  for(i in input){
+    mean = mean(input)
+  } 
+  print(mean)
+}
+```
+
+#### 2.1 a mean of an input vector is `r mean(input)`
+
+```{r}
+g <- c("MALE","FEMALE","FEMALE","MALE","FEMALE","MALE","MALE","FEMALE", "MALE","MALE","FEMALE","MALE","MALE",
+"FEMALE","MALE","MALE","MALE")
+
+  
+```
+
+```{r}
+
+x <- rnorm(1000, 120, 5)
+y <- sample(c("M","F"),size = 1000, replace = TRUE)
+
+
+df <-cbind(x,y)
+
+df_1 <- cbind.data.frame(x,y)
+
+ 
+```
+
+#### 3.2.2 `r df`
+
+
+```{r}
+
+df <- rnorm(100, 120, 5)
+df_2 <- sample(c("M","F"),size = 100, replace = TRUE)
+plotting_df <- as.data.frame.table(table(df_1))
+
+p <- ggplot(plotting_df, aes(x = df_2, weight = Freq)) +
+  
+  geom_bar(width = 0.5, fill = "blue") +
+  labs(x = "", y = "Frequency", 
+       title = "Sample distribution of Male and Female ") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  
+  geom_text(aes(x = df_2, y = Freq + 1, label = Freq)) 
+
+  
+
+```
+
+
